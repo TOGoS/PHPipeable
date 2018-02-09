@@ -11,5 +11,6 @@ $someDataSource->pipe($someDataSink);
 // so shove some data through:
 
 $someDataSource->emitSomeStuff(); // Use imagination here
-$results = $someDataSource->close(); // Let everyone know that's all
+$results = $someDataSource->emitClose(); // Let everyone know that's all,
+                                         // and collect feedback from sinks
 ```
