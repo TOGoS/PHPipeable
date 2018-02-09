@@ -1,0 +1,28 @@
+{
+	"name": "togos/phpipeable",
+	"description": "A PHP framework for modeling data flows in a reactive-ish way, similar to Node streams",
+	"license": "MIT",
+
+
+	"require": {
+		"php": ">=5.2"
+	},
+	"autoload": {
+		"psr-0": {
+			"TOGoS_PHPipeable": "src/main/php/"
+		}
+	},
+
+
+	"require-dev": {
+		"togos/simpler-test": "1.1.1"
+	},
+	"autoload-dev": {
+		"psr-0": {
+			"TOGoS_PHPipeable": "src/test/php/"
+		}
+	},
+	"scripts": {
+		"test": "vendor/bin/phpsimplertest --colorful-output --bootstrap vendor/autoload.php src/test/"
+	}
+}
