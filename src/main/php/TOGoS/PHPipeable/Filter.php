@@ -1,8 +1,7 @@
 <?php
 
 class TOGoS_PHPipeable_Filter
-extends TOGoS_PHPipeable_BasePipeable
-implements TOGoS_PHPipeable_Sink
+extends TOGoS_PHPipeable_AbstractFilter
 {
 	use TOGoS_PHPipeable_SinkGears;
 
@@ -21,11 +20,5 @@ implements TOGoS_PHPipeable_Sink
 		$value = call_user_func($this->filterCallback,$item,$metadata);
 		if( $value === null && $this->dropNulls ) return;
 		$this->emitItem($value);
-	}
-	public function open(array $fileInfo=array()) {
-		$this->emitOpen($fileInfo);
-	}
-	public function close(array $metadata=array()) {
-		return $this->emitClose($metadata);
 	}
 }
