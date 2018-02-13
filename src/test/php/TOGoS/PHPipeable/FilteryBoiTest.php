@@ -10,7 +10,7 @@ class TOGoS_PHPipeable_FilteryBoiTest extends TOGoS_SimplerTest_TestCase
 		}, true);
 		$filter->pipe($collector);
 		$filter->item("foo");
-		$filter->item("bar");
+		call_user_func($filter, "bar"); // Make sure #__invoke works as an alias to #item!
 		$filter->item("baz");
 		$result = $filter->close();
 		

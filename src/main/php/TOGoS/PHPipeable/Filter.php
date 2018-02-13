@@ -3,8 +3,6 @@
 class TOGoS_PHPipeable_Filter
 extends TOGoS_PHPipeable_AbstractFilter
 {
-	use TOGoS_PHPipeable_SinkGears;
-
 	protected $filterCallback;
 	protected $dropNulls;
 	/**
