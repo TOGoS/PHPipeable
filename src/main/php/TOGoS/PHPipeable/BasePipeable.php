@@ -3,7 +3,7 @@
 class TOGoS_PHPipeable_BasePipeable implements TOGoS_PHPipeable_Pipeable
 {
 	protected $nextSinkNumber = 1;
-	protected $sinks;
+	protected $sinks = array();
 	
 	protected function emitOpen(array $info=array()) {
 		foreach( $this->sinks as $sink ) {
