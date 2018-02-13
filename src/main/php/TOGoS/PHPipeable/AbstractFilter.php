@@ -10,7 +10,7 @@ extends TOGoS_PHPipeable_BasePipeable
 implements TOGoS_PHPipeable_Sink
 {
 	public function item($item, array $metadata=array()) {
-		$this->emitItem($value, $metadata);
+		$this->emitItem($item, $metadata);
 	}
 	public function open(array $fileInfo=array()) {
 		$this->emitOpen($fileInfo);
