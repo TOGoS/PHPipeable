@@ -17,6 +17,6 @@ extends TOGoS_PHPipeable_AbstractFilter
 	public function item($item, array $metadata=array()) {
 		$value = call_user_func($this->filterCallback,$item,$metadata);
 		if( $value === null && $this->dropNulls ) return;
-		$this->emitItem($value);
+		$this->emitItem($value,$metadata);
 	}
 }
