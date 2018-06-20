@@ -13,4 +13,16 @@ extends TOGoS_SimplerTest_TestCase
 		$sourcedContent = implode("", $result['items']);
 		$this->assertEquals($actualContent, $sourcedContent);
 	}
+	
+	public function testPipeToFile() {
+		$randoContent = "abc123".rand(1000000,9999999).rand(1000000,9999999).rand(1000000,9999999).rand(1000000,9999999);
+		$tempFile = tempnam(sys_get_temp_dir(), "testPipeToFile");
+		$source = new TOGoS_PHPipeable_Pipe();
+		TOGoS_PHPipeable_File::pipeToFile($source, $tempFile);
+		$source->open();
+		$source->item($randoContent);
+		$source->close();
+
+		$this->assertEquals($randoContent, file_get_contents($tempFile));
+	}
 }

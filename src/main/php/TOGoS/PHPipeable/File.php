@@ -32,4 +32,8 @@ class TOGoS_PHPipeable_File
 		fclose($stream);
 		return $sink->close($fileInfo);
 	}
+	
+	public static function pipeToFile(TOGoS_PHPipeable_Pipeable $source, $destFile, array $options=array()) {
+		$source->pipe(new TOGoS_PHPipeable_SingleFileWriter($destFile, $options));
+	}
 }
