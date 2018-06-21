@@ -9,7 +9,7 @@ class TOGoS_PHPipeable_File
 	}
 	
 	public static function sourceFile($sourceFile, TOGoS_PHPipeable_Sink $sink, array $options=array()) {
-		if( $sourceFile == '-' and self::getOpt($options, self::MINUS_MEANS_STDIO, true) ) {
+		if( $sourceFile == '-' and self::getOpt($options, self::MINUS_MEANS_STDIO, false) ) {
 			$sourceFile = "php://stdin";
 		}
 		
