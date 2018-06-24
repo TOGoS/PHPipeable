@@ -25,7 +25,6 @@ class TOGoS_PHPipeable_File
 		
 		$sink->open($fileInfo);
 		while( ($data = fread($stream, 65536)) !== false && strlen($data) > 0 ) {
-			echo "Read ".strlen($data)." bytes\n";
 			$sink->item($data);
 		}
 		
@@ -34,6 +33,10 @@ class TOGoS_PHPipeable_File
 	}
 	
 	public static function pipeToFile(TOGoS_PHPipeable_Pipeable $source, $destFile, array $options=array()) {
+		if( $destFile == '-' and self::getOpt($options, self::MINUS_MEANS_STDIO, false) ) {
+			$destFile = "php://stdout";
+		}
+		
 		$source->pipe(new TOGoS_PHPipeable_SingleFileWriter($destFile, $options));
 	}
 }
