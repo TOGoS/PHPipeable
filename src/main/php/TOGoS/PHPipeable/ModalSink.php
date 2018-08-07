@@ -47,5 +47,6 @@ implements TOGoS_PHPipeable_Sink
 	/** @override */
 	public function close(array $metadata=array()) {
 		$this->changeState('closed', 'open', 'close');
+		return array();
 	}
 }
