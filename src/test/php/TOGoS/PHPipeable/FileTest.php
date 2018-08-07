@@ -25,4 +25,18 @@ extends TOGoS_SimplerTest_TestCase
 
 		$this->assertEquals($randoContent, file_get_contents($tempFile));
 	}
+	
+	public function testSourceDirectory() {
+		$actualContent = "";
+		$files = scandir(__DIR__);
+		natsort($files);
+		foreach( $files as $f ) $actualContent .= file_get_contents(__DIR__."/$f");
+		
+		$collector = new TOGoS_PHPipeable_Collector();
+		$result = TOGoS_PHPipeable_File::sourceFile(__DIR__, $collector, array(
+			TOGoS_PHPipeable_File::RECURSE_INTO_DIRECTORIES => true
+		));
+		$sourcedContent = implode("", $result['items']);
+		$this->assertEquals($actualContent, $sourcedContent);
+	}
 }
