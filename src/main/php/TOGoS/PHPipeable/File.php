@@ -41,7 +41,7 @@ class TOGoS_PHPipeable_File
 		
 		$sink->open($fileInfo);
 		while( ($data = fread($stream, 65536)) !== false && strlen($data) > 0 ) {
-			$sink->item($data);
+			$sink->item($data, $fileInfo);
 		}
 		
 		fclose($stream);
