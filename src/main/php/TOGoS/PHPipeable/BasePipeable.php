@@ -26,10 +26,11 @@ class TOGoS_PHPipeable_BasePipeable implements TOGoS_PHPipeable_Pipeable
 	public function pipe(TOGoS_PHPipeable_Sink $sink) {
 		$sinkNumber = $this->nextSinkNumber++;
 		$this->sinks[$sinkNumber] = $sink;
-		return $sinkNumber;
+		return new TOGoS_PHPipeable_PipeHandle($sinkNumber, $sink);
 	}
 	
 	public function unpipe($sinkNumber) {
+		$sinkNumber = (string)$sinkNumber;
 		unset($this->sinks[$sinkNumber]);
 	}
 }
