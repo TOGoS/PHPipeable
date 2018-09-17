@@ -38,11 +38,11 @@ implements TOGoS_PHPipeable_Sink, TOGoS_PHPipeable_Pipeable
 	//// Pipeable
 	
 	public function pipe(TOGoS_PHPipeable_Sink $sink) {
-		$this->lastStage->pipe($sink);
+		return $this->lastStage->pipe($sink);
 	}
 	
-	public function unpipe($sinkNumber) {
-		$this->lastStage->unpipe($sink);
+	public function unpipe($connectionId) {
+		return $this->lastStage->unpipe($connectionId);
 	}
 	
 	//// Sink

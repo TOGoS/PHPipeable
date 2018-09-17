@@ -19,11 +19,19 @@ class TOGoS_PHPipeable_PipelineTest extends TOGoS_SimplerTest_TestCase
 			$filter1, $filter2, $filter3
 		), true);
 
-		$pipeline->pipe($collector);
+		$collectorConnection = $pipeline->pipe($collector);
 		$pipeline->open(array('oscar'=>'I love trash!'));
 		$pipeline->item("foo");
 		call_user_func($pipeline, "bar"); // Make sure #__invoke works as an alias to #item!
 		$pipeline->item("baz");
+
+		$pipeline->unpipe($collectorConnection);
+		// Make sure this doesn't go through:
+		$pipeline->item("baz2");
+
+		// But then connect it again
+		$pipeline->pipe($collector);
+
 		$result = $pipeline->close(array('fonzie'=>'Ehhh!'));
 		
 		$this->assertEquals( array(
